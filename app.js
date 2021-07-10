@@ -58,6 +58,27 @@ app.get('/addPost2', (req, res) => {
     })
 })
 
+// select all the posts
+app.get('/getposts', (req, res) => {
+    let sql = 'select * from Posts';
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('posts featched successfully..');
+    })
+})
+
+// select a single post 
+app.get('/getPost/:id', (req, res) => {
+    let sql = `select * from Posts where id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('post featched successfully..');
+    })
+})
+
+
 
 
 
