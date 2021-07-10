@@ -78,6 +78,27 @@ app.get('/getPost/:id', (req, res) => {
     })
 })
 
+// updata post 
+app.get('/updatapost/:id', (req, res) => {
+    let newTitle = 'updated title';
+    let sql = `update Posts set title = '${newTitle}' where id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('posts Updated..');
+    })
+})
+
+// delete single data
+app.get('/deletePost/:id', (req, res) => {
+    let sql = `delete from Posts where id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send(`the post with the id ${req.params.id} is deleted`);
+    })
+})
+
 
 
 
