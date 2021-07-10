@@ -36,6 +36,29 @@ app.get('/createPostTable', (req, res) => {
     })
 })
 
+// insert post 1
+app.get('/addPost1', (req, res) => {
+    let Post = { title: 'first', body: 'this is the first post' };
+    let sql = 'INSERT INTO Posts set ?';
+    let query = db.query(sql, Post, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('first post added....');
+    })
+})
+
+// insert post 
+app.get('/addPost2', (req, res) => {
+    let Post = { title: 'second post', body: 'this is the second post' };
+    let sql = 'INSERT INTO Posts set ?';
+    let query = db.query(sql, Post, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('post 2 added....');
+    })
+})
+
+
 
 
 
